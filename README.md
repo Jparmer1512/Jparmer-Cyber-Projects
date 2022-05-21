@@ -106,4 +106,12 @@ SSH into the control node and follow the steps below:
 - _Which URL do you navigate to in order to check that the ELK server is running?
 -  The public ip of the ELK Machine.  http://(ELK-IP-ADDRESS):5601
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+Specific commands to run the ansible configuration for the Elk-Server
+ ssh azadmin@Jumpbox IP address
+ sudo docker start [containername]
+ sudo docker attach [containername]
+ cd /etc/ansible
+ ansible-playbook Elk-playbook.yml (installs and configures server)
+ ansible-playbook filebeat-playbook.yml (installs and configures filebeat)
+ ansible-playbook metricbeat-playbook.yml (installs and configures metricbeat)
+ Elk-Server-IP-ADDRESS:5601/app/kibana in a browser window to open the kibana GUI. 
