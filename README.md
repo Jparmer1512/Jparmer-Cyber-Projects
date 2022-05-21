@@ -6,8 +6,11 @@ Jparmer-Cyber-Projects/Diagrams/Elk Diagram.png
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the  may be used to install only certain pieces of it, such as Filebeat.
 
-  - ElkPlaybook.yml
-
+- My-Playbook.yml- Installs DVWA Servers
+- Elk-Playbook.yml- Installs the Elk Server
+  -Filebeat-playbook.yml- Installs and condfigures Filebeat on Elk and DVWA servers
+  -Metricbeat-playbook.yml- Installs and configures Metricbeat on Elk and DVWA servers
+  
 This document contains the following details:
 - Description of the Topologu
 - Access Policies
@@ -31,30 +34,31 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address  | Operating System |
-|----------|----------|-------------|------------------|
-| Jump Box | Gateway  | 20.70.72.164| Linux            |
-| Web-1    |          | 10.0.0.5    |                  |
-| Web-2    |          | 10.0.0.6    |                  |
-| Elk Svr  |          | 10.0.0.7    |                  |
+| Name     | Function               | IP Address  | Operating System |
+|----------|------------------------|-------------|------------------|
+| Jump Box | Gateway                | 20.70.72.164| Linux            |
+| Web-1    | Web Server-Docker-Dvwa | 10.0.0.5    | Linux            |
+| Web-2    | Web Server-Docker-Dvwa | 10.0.0.6    | Linux            |
+| Elk Svr  | ELK Stack              | 10.1.0.4    | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump-Box-Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- Personal IP Address
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by SSH.
+- The ELK Server can only be accessed using SSH from the Jump-Box-Provisioner and from my Personal IP address
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name     | Publicly Accessible    | Allowed IP Addresses                                       |
+|----------|------------------------|------------------------------------------------------------|
+| Jump Box | No                     | Personal IP Address                                        |
+| Web-1    | Through Load balancer  | 52.243.82.194 Load Balancer Public IP/ 10.0.0.4 Jumpbox IP |
+| Web-2    | Through Load balancer  | 52.243.82.194 Load Balancer Public IP/ 10.0.0.4 Jumpbox IP |
+| ELK SVR  | No                     | SSH 10.0.0.4 Jumpbox HTTP Port 5601 Personal IP            |
 
 ### Elk Configuration
 
