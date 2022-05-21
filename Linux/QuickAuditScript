@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Define Variables
+output=$HOME/research/sys_info.txt
+ip=$(ip addr | grep inet | tail -2 |head -1)
+suids=$(sudo find / -type -f -perm /4000 2> /dev/null)
+
+# Check for research directory. Create it if it doesnt exist.
+if [ ! -d $HOME/research
+then
+ mkdir $HOME/research
+fi
+
+# Check for output file. Clear it if needed.
+if [ -f $output ]
+then
+ >$output
+fi
+
+echo " A Quick Audit script"
