@@ -65,9 +65,10 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - Ansible can configure multiple programs onto multiple machines. The alternative is deploying each machine individually and configuring it manually. That is a time and resource consuming process.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+-Install Docker.io and Pip3
+- Increases VM memory
+- Downloads and configures Elk docker container
+- Sets available ports
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -83,7 +84,8 @@ We have installed the following Beats on these machines:
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+-Filebeat watches for logs and files in specified locations to collect and forward log events.
+-MetricBeat records metrics adn statistical data from the OS and services running on the machine.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -93,7 +95,6 @@ SSH into the control node and follow the steps below:
 - Update the configuration file to include the Name and Private IP of the ELK-Server to the Elasticsearch and Kibaba sections of the config files
 - Run the playbook, and navigate to your ELK-Servers Public IP:5601/app/kibaba to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
 - Elk-Playbook.yml- Installs the Elk Server
   -Filebeat-playbook.yml- Installs and condfigures Filebeat on Elk and DVWA servers
   -Metricbeat-playbook.yml- Installs and configures Metricbeat on Elk and DVWA servers
