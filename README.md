@@ -27,12 +27,11 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly secured, in addition to restricting external access to the network.
 - Load Balancing ensures the web servers are available which enforces the Availability portion of the CIA Triad.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
+- Filebeat watches for logs and events in specified locations and forwards them to Elasticsearch
+- Metricbeat records metrics and statistical data from the operating system and services running on the server
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function               | IP Address  | Operating System |
 |----------|------------------------|-------------|------------------|
@@ -63,7 +62,7 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- Ansible can configure multiple programs onto multiple machines. The alternative is deploying each machine individually and configuring it manually. That is a time and resource consuming process.
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
