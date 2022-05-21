@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Path to sensitive folders
+Path=('/etc/shadow' '/etc/passwd'
+
+# Add a sentence to display before listing the permissions
+echo -e "\nThe permissions for sensitive /etc files: \n"
+
+# For loop
+for f in ${ Path [@] } ;
+ do ls-l $f
+done
